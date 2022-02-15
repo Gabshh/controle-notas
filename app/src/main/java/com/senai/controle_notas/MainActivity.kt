@@ -9,7 +9,7 @@ import android.widget.TextView
 
 lateinit var nota1EditText: EditText
 lateinit var nota2EditText: EditText
-lateinit var nomeEditText: EditText
+private lateinit var nomeEditText: EditText
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +46,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun situacaoAluno(media: Int): String {
+        if (media >= 5) {
+            return "Aprovado"
+        }else{
+            return "Reprovado"
+        }
+
+    }
+
     //fznd umas poha q da a msm coisa
 
     //    private fun calcularMedia(nota1: Int, nota2: Int): Double {
@@ -56,6 +65,13 @@ class MainActivity : AppCompatActivity() {
 
 //    val calcularMedia = {nota1: Int, nota2: Int -> (nota1 + nota2) / 2}
 
+    fun calcularMedia (vararg notas: Int): Int{
+        var soma = 0
+        for (nota in notas) {
+            soma = soma + nota
+        }
+        return soma / notas.size
+    }
 
     private fun validarCampos(): Boolean {
         var noError = true
